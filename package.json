@@ -1,0 +1,30 @@
+{
+  "name": "Zoom-Phone-Demo-App",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nodebotanist/Zoom-Phone-Demo-App.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nodebotanist/Zoom-Phone-Demo-App/issues"
+  },
+  "homepage": "https://github.com/nodebotanist/Zoom-Phone-Demo-App#readme",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "eslint-config-prettier": "^7.2.0",
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "eslint": "^7.19.0",
+    "eslint-plugin-react": "^7.22.0",
+    "prettier": "^2.2.1"
+  }
+}
