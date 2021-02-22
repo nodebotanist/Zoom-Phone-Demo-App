@@ -25,6 +25,7 @@ module.exports = {
             accessToken: accessToken.data.access_token,
             refreshToken: accessToken.data.refresh_token
         }
-        res.redirect('http://localhost:3000')
+        console.log(req.session)
+        res.redirect('/profile')
     }
 }
