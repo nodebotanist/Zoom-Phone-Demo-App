@@ -2,12 +2,12 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const dotenv = require('dotenv')
 
-const authRoutes = require('./src/routes/auth')
+const authRoutes = require('./routes/auth')
 
 dotenv.config()
 
 const app = express()
-const port = 8080
+const port = 8000
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }));
