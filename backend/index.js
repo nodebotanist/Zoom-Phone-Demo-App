@@ -32,6 +32,7 @@ app.get('/', (req, res) => {
 app.get('/auth', auth.completeAuth)
 
 app.get('/profile', call.profile)
+app.get('/log', call.log)
 
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`)
