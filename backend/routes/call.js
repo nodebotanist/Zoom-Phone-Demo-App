@@ -15,6 +15,6 @@ module.exports = {
             }
         })
 
-        res.send(callProfile.datas)
+        res.send(callProfile.data)
     }
 }

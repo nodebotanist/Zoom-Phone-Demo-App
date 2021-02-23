@@ -18,14 +18,12 @@ module.exports = {
                 Authorization: `Bearer ${accessToken.data.access_token}`
             }
         })
-        console.log(userData.data)
         //save user data to the session
         req.session.userData = {
             userId: userData.data.id,
             accessToken: accessToken.data.access_token,
             refreshToken: accessToken.data.refresh_token
         }
-        console.log(req.session)
         res.redirect('/profile')
     }
 }
