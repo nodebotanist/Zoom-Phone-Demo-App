@@ -3,6 +3,7 @@ const session = require('express-session')
 const redis = require('redis')
 const bodyParser = require('body-parser')
 const dotenv = require('dotenv')
+const {createProxyMiddleware} = require('http-proxy-middleware')
 
 const auth = require('./routes/auth')
 const call = require('./routes/call')
@@ -23,6 +24,10 @@ app.use(session({
   secret: "336565067d7ff0e939b7dfc53323f51e",
   store: new redisStore({client: redisClient}),
   cookie: {}
+}))
+app.use('/frontend/proxy', createProxyMiddleware({
+  target: process.env.ZOOM_APP_CLIENT_URL,
+  changeOrigin: true,
 }))
 
 app.get('/', (req, res) => {

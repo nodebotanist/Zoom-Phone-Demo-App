@@ -24,6 +24,6 @@ module.exports = {
             accessToken: accessToken.data.access_token,
             refreshToken: accessToken.data.refresh_token
         }
-        res.redirect('/profile')
+        res.redirect('/frontend/proxy')
     }
 }
