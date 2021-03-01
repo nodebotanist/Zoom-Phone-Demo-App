@@ -29,6 +29,10 @@ app.use('/frontend/proxy', createProxyMiddleware({
   target: process.env.ZOOM_APP_CLIENT_URL,
   changeOrigin: true,
 }))
+app.use('/', createProxyMiddleware({
+  target: process.env.ZOOM_APP_CLIENT_URL,
+  changeOrigin: true,
+}))
 
 app.get('/', (req, res) => {
   res.send('Hello World!')

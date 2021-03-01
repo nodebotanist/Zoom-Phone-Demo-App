@@ -1,9 +1,10 @@
-import logo from './logo.svg';
 import './App.css';
+import'./call/profile'
 
 function App() {
   return (
     <div className="App">
+      <profile />
     </div>
   );
 }
