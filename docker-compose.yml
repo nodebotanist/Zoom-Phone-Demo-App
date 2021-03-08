@@ -5,12 +5,15 @@ services:
     ports:
       - "3000:3000"
     volumes:
-      - "./frontend:/app"
+      - "./frontend:/app:rw"
+    environment: 
+      - "CHOKIDAR_USE_POLLING=true"
   backend:
     build: "./backend"
     ports:
       - "8000:8000"
     volumes:
-      - "./backend:/app"
+      - "/app/node_modules"
+      - "./backend:/app:rw"
   redis:
     image: "redis:alpine"

@@ -3,6 +3,7 @@ const session = require('express-session')
 const redis = require('redis')
 const bodyParser = require('body-parser')
 const dotenv = require('dotenv')
+const {createProxyMiddleware} = require('http-proxy-middleware')
 
 const auth = require('./routes/auth')
 const call = require('./routes/call')
@@ -33,6 +34,25 @@ app.get('/auth', auth.completeAuth)
 
 app.get('/profile', call.profile)
 app.get('/log', call.log)
+
+app.post('/event', (req, res)=>{
+  res.send('event recieved')
+})
+
+app.use('/proxy', createProxyMiddleware({
+  target: process.env.FRONTEND_URI,
+  changeOrigin: true
+}))
+
+app.use('/', createProxyMiddleware({
+  target: process.env.FRONTEND_URI,
+  changeOrigin: true
+}))
+
+app.use('/zoom/api', (req, res, next) => {
+  //TODO: Implement API proxy
+  next()
+})
 
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`)
