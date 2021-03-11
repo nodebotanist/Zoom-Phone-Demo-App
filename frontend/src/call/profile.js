@@ -17,6 +17,12 @@ const Profile = () => {
         <div className="App col col-lg-3">
             <h1>User Profile:</h1>
             <p>Email: {profile ? profile.email: 'no user'}</p>
+            <p>Phone numbers:</p>
+            <ul>
+                {profile.phone_numbers ? profile.phone_numbers.map((phoneNumber) => (
+                    <li>{phoneNumber.number}</li>
+                )) : null}
+            </ul>
         </div>
     );    
 }
