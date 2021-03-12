@@ -23,6 +23,12 @@ const Profile = () => {
                     <li>{phoneNumber.number}</li>
                 )) : null}
             </ul>
+            <p>Calling Plans</p>
+            <ul>
+                {profile.calling_plans ? profile.calling_plans.map((plan) => (
+                    <li>{plan.name}</li>
+                )): null}
+            </ul>
         </div>
     );    
 }
