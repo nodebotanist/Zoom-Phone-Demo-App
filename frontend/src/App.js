@@ -11,8 +11,8 @@ function App() {
       <div className="row">
         <Profile /> 
         <Status />
-        <CallLog />
       </div>
+      <CallLog />
     </div>
   );
 }

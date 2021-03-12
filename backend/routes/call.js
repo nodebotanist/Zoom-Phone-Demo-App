@@ -24,7 +24,7 @@ module.exports = {
         }
         
         let callLog = await axios({
-            url: `https://api.zoom.us/v2/phone/users/${req.session.userData.userId}/call_logs`,
+            url: `https://api.zoom.us/v2/phone/users/${req.session.userData.userId}/call_logs?from=2020-01-01`,
             method: 'GET',
             headers: {
                 Authorization: `Bearer ${req.session.userData.accessToken}`
