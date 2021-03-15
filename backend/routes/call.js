@@ -1,4 +1,5 @@
 let axios = require('axios')
+let jwt = require('jsonwebtoken')
 
 module.exports = {
     profile: async function (req, res) {
@@ -30,6 +31,26 @@ module.exports = {
                 Authorization: `Bearer ${req.session.userData.accessToken}`
             }
         })
+
+        // Add Phone links to target
+        callLog.data.call_logs.forEach((call) => {
+            numberToCall = call.direction === 'incoming' ? call.caller_number : call.callee_number
+            numberToCall = numberToCall.replace('+', '')
+            console.log(numberToCall)
+
+            const tokenBody = {
+                iss: process.env.ZOOM_CLIENT_ID,
+                iat: Date.now(),
+                exp: Date.now() + 60*60*1000,
+                oid: numberToCall,
+                uid: req.session.userData.userId
+            }
+
+            const token = jwt.sign(tokenBody, process.env.ZOOM_CLIENT_SECRET)
+
+            call.callURL = `zoomphonecall://${numberToCall}?cat=seccall&token=${token}`
+        })
+    
         res.send(callLog.data)
     }
 }
