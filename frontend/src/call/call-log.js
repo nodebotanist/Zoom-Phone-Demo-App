@@ -29,7 +29,7 @@ const CallLog = () => {
               <tr>
                 <td>{call.date_time}</td>
                 <td>{call.direction}</td>
-                <td>{call.direction == 'outbound' ? call.callee_number : call.caller_number}</td>
+                <td><a href={call.callURL}>{call.direction == 'outbound' ? call.callee_number : call.caller_number}</a></td>
                 <td>{call.direction == 'outbound' ? call.callee_name : call.caller_name}</td>
               </tr>
             )): null}
