@@ -1,9 +1,11 @@
+const http = require('http')
 const express = require('express')
 const session = require('express-session')
 const redis = require('redis')
 const bodyParser = require('body-parser')
 const dotenv = require('dotenv')
 const {createProxyMiddleware} = require('http-proxy-middleware')
+const WebSocket = require('websocket') 
 
 const auth = require('./routes/auth')
 const call = require('./routes/call')
@@ -17,6 +19,11 @@ let redisStore = require('connect-redis')(session)
 let redisClient = redis.createClient({
   host: 'redis'
 })  
+
+const server = http.createServer(app)
+const wss = new WebSocket.server({
+  httpServer: server
+})   
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }));

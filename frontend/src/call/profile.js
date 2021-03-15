@@ -14,7 +14,7 @@ const Profile = () => {
     }, [])
 
     return (
-        <div className="App col col-lg-3">
+        <div className="App col col-lg-6">
             <h1>User Profile:</h1>
             <p>Email: {profile ? profile.email: 'no user'}</p>
             <p>Phone numbers:</p>

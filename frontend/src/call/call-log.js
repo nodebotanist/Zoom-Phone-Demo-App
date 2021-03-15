@@ -15,7 +15,7 @@ const CallLog = () => {
     }, [])
 
     return (
-      <div className="App col col-lg-3">
+      <div className="App col col-lg-12">
         <h1>Call Log:</h1>
         <table className="table">
           <thead>
