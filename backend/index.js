@@ -5,10 +5,10 @@ const redis = require('redis')
 const bodyParser = require('body-parser')
 const dotenv = require('dotenv')
 const {createProxyMiddleware} = require('http-proxy-middleware')
-const WebSocket = require('websocket') 
 
 const auth = require('./routes/auth')
 const call = require('./routes/call')
+const events = require('./routes/events')
 
 dotenv.config()
 
@@ -19,11 +19,6 @@ let redisStore = require('connect-redis')(session)
 let redisClient = redis.createClient({
   host: 'redis'
 })  
-
-const server = http.createServer(app)
-const wss = new WebSocket.server({
-  httpServer: server
-})   
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -42,9 +37,9 @@ app.get('/auth', auth.completeAuth)
 app.get('/profile', call.profile)
 app.get('/log', call.log)
 
-app.post('/event', (req, res)=>{
-  res.send('event recieved')
-})
+app.post('/event', events.process)
+
+app.get('/currentEvent', events.current)
 
 app.use('/proxy', createProxyMiddleware({
   target: process.env.FRONTEND_URI,
